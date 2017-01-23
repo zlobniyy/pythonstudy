@@ -70,7 +70,7 @@ print("="*79)
 #
 # Вход: 11
 # Выход: 5 3
-tflat=11
+tflat=24
 floors=0
 flat_numb=0
 flats_on_floor=0
@@ -79,16 +79,29 @@ f=0
 ind=0
 floors_numb=0
 tfloor=0
+#z:=0
 while tflat >= flat_numb:
     f += 1
     print("f",f)
     floors_numb += f
     flat_numb += f**2
     tf=flat_numb
+
+for z in range(1,f+1):
+    if flat_numb-f*z<tf:
+            tfloor=floors_numb
+    else:
+        pass
+    print(z)
+    print(tfloor)
+
+
+
     print( "floors_numb", floors_numb )
     print( "flat_numb", flat_numb )
     print("-"*15)
-tfloor = (flat_numb - f ** 2)
-print( "target_floor", tfloor )
+print("tfloor",tfloor)
+
+
 
 
