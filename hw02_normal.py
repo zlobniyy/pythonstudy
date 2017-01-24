@@ -1,3 +1,5 @@
+# coding utf-8
+__author__="Кравченко Степан"
 # Задача-1:
 # Дан список, заполненный произвольными целыми числами, получите новый список, элементами которого будут
 # квадратные корни элементов исходного списка, но только если результаты извлечения корня не имеют десятичной части и
@@ -15,9 +17,11 @@ for i in range(0,n):
     i += 1
 print(rand_ls1)
 for j in rand_ls1:
-    if math.sqrt(j)-int(math.sqrt(j))==0:
-        rand_ls2.append(math.sqrt(j))
-
+    if j >= 0:
+        if math.sqrt(j)-int(math.sqrt(j))==0:
+            rand_ls2.append(math.sqrt(j))
+    else:
+        pass
 print(rand_ls2)
 print("="*79)
 # Задача-2: Дана дата в формате dd.mm.yyyy, например: 02.11.2013.
