@@ -85,7 +85,7 @@ print("="*79)
 
 ############# не сделано ##############
 
-tflat=24
+tflat=140
 floors=0
 flat_numb=0
 flats_on_floor=0
