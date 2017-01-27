@@ -11,18 +11,25 @@ def my_round(number, ndigits):
     lsch=str(number).split(".")
     ch1=lsch[0]
     ch2=lsch[1]
-    num=list(map(str, str(number)))
-    print(num)
-    for i in range(len(num)-1,-1,-1):
-        #print(num[i])
-        if num[i] == ".":
-            pass
-        elif int(num[i])>4:
-            num[i] = str(int(num[i])+1)
-        print(num[i])
-    pass
+    num2 = list( map( int, str( ch2 ) ) )
+    num1 = list( map( int, str( ch1 ) ) )
+    num2copy=num2
+    print( num1 )
+    print( num2 )
+    for i in range(len(num2copy)-1,ndigits,-1):
+        if num2[i] >4:
+           #num2[i-1] = num2[i-1]+1
+           num2[i - 1] += 1
+           num2[i] = 0
+        num2.pop(i)
+    print(num2)
+    if num2[0] > 4:
+        num1[0] +=1
+
+    print(("".join(str(num1))+"."+"".join(str(num2))))
+#my_round(0.23189498435, 5)
 my_round(2.1234567, 5)
-print(my_round(2.1234567, 5))
+
 
 
 # Задание-2:
