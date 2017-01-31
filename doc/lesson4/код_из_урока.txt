@@ -1,0 +1,613 @@
+Python 3.4.4 (v3.4.4:737efcadf5a6, Dec 20 2015, 20:20:57) [MSC v.1600 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> def check(a, b, c):
+    if a == b and b > c:
+        return True
+    else:
+        return False
+
+    
+>>> def check(a, b, c):
+    return a == b and b > c
+
+>>> check(2, 2, 0)
+True
+>>> s = 'dtr;'
+>>> s.endswith(';') == True
+True
+>>> day = {'01':'первое', '02':'второе'}
+>>> day = ['', 'первое', 'второе']
+>>> day[1]
+'первое'
+>>> s = 'Petr Ivanov\n'
+>>> s.strip()
+'Petr Ivanov'
+>>> s1 = '\n'
+>>> s1.strip()
+''
+>>> len(s1.strip()) > 0
+False
+>>> if s1.strip():
+    print('Не пусто')
+else:
+    print('Пустая')
+
+    
+Пустая
+>>> ls = [1,2,3,4,5]
+>>> ls[0], ls[1] = ls[1], ls[0]
+>>> ls
+[2, 1, 3, 4, 5]
+>>> '{:.3f}'.format(2.14313241324)
+'2.143'
+>>> '{:.{}f}'.format(2.14313241324, 5)
+'2.14313'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> import fractions
+>>> dir(fractions)
+['Decimal', 'Fraction', '_PyHASH_INF', '_PyHASH_MODULUS', '_RATIONAL_FORMAT', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'gcd', 'math', 'numbers', 'operator', 're', 'sys']
+>>> from fractions import Fraction
+>>> f = Fraction('2/3')
+>>> f
+Fraction(2, 3)
+>>> print(f)
+2/3
+>>> f2 = Fraction('1/3')
+>>> f + f2
+Fraction(1, 1)
+>>> from fractions import gcd
+>>> gcd(155, 15)
+5
+>>> def my_f(func, ls):
+    out = []
+    for x in ls:
+        if x > 0:
+            out.append(x)
+    return out
+
+>>> def my_f(func, ls):
+    out = []
+    for x in ls:
+        if func(x):
+            out.append(x)
+    return out
+
+>>> my_f(lambda x: x < 0, [-1, 6, 7, 8, 0, -6])
+[-1, -6]
+>>> filter(lambda x: x < 0, [-1, 6, 7, 8, 0, -6])
+<filter object at 0x0000000003714D30>
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def func(n):
+    yield 'Start'
+    while n > 0:
+        yield n
+        n -= 1
+    yield 'End'
+
+    
+>>> gen = func(15)
+>>> gen
+<generator object func at 0x00000000036F8048>
+>>> next(gen)
+'Start'
+>>> next(gen)
+15
+>>> next(gen)
+14
+>>> next(gen)
+13
+>>> for x in gen:
+    print(x)
+
+    
+12
+11
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+End
+>>> for x in gen:
+    print(x)
+
+    
+>>> next(gen)
+Traceback (most recent call last):
+  File "<pyshell#78>", line 1, in <module>
+    next(gen)
+StopIteration
+>>> gen = func(15)
+>>> for x in range(15):
+    print(x)
+
+    
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+>>> gen
+<generator object func at 0x00000000036F81B0>
+>>> ls
+[2, 1, 3, 4, 5]
+>>> ls[1:4]
+[1, 3, 4]
+>>> gen[:3]
+Traceback (most recent call last):
+  File "<pyshell#86>", line 1, in <module>
+    gen[:3]
+TypeError: 'generator' object is not subscriptable
+>>> def func(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+        
+>>> ls
+[2, 1, 3, 4, 5]
+>>> ls = [5,4,3,2,1]
+>>> ls == list(func(5))
+True
+>>> ls = list(func(5))
+>>> ls
+[5, 4, 3, 2, 1]
+
+>>> def my_f(func, ls):
+    for x in ls:
+        if func(x):
+            yield x
+
+            
+>>> my_f(lambda x: x > 0, [1,2,4,-9,-8, 6,7,8])
+<generator object my_f at 0x0000000003721048>
+>>> list(my_f(lambda x: x > 0, [1,2,4,-9,-8, 6,7,8]))
+[1, 2, 4, 6, 7, 8]
+>>> 
+>>> 
+>>> 
+>>> def fib(n):
+    a, b = 0, 1
+    for i in range(n):
+        yield a
+        a, b = b, a + b
+
+        
+>>> list(fib(3))
+[0, 1, 1]
+>>> list(fib(5))
+[0, 1, 1, 2, 3]
+\
+>>> list(fib(7))
+[0, 1, 1, 2, 3, 5, 8]
+>>> list(fib(10))
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+>>> list(fib(20))
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]f
+>>> 
+>>> 
+>>> 
+>>> 
+>>> ls = [i ** 2 for i in range(15) if i % 2 == 1]
+>>> ls
+[1, 9, 25, 49, 81, 121, 169]
+>>> ls = []
+>>> for i in range(15):
+    if i % 2 == 1:
+        ls.append(i ** 2)
+
+        
+>>> ls
+[1, 9, 25, 49, 81, 121, 169]
+>>> ls = [i ** 2 for i in range(15)]
+>>> ls
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196]
+>>> 
+>>> 
+>>> 
+>>> 
+>>> x = 13
+>>> y = x ** 2 if x % 2 == 1 else 777
+>>> y
+169
+>>> ls = [i ** 2 if i % 2 == 1 else i * 2 for i in range(15)]
+>>> 
+>>> ls
+[0, 1, 4, 9, 8, 25, 12, 49, 16, 81, 20, 121, 24, 169, 28]
+>>> ls = [i ** 2 for i in range(15) if i % 2 == 1 else 'xxx']
+SyntaxError: invalid syntax
+>>> ls = [i ** 2 for i in range(15) if i % 2 == 1: else 'xxx']
+SyntaxError: invalid syntax
+>>> ls = [i ** 2 for i in range(15) if i % 2 == 1: else 'xxx']
+SyntaxError: invalid syntax
+>>> ls = {i ** 2:str(i) for i in range(15)}
+>>> ls
+{0: '0', 1: '1', 4: '2', 100: '10', 81: '9', 64: '8', 9: '3', 144: '12', 16: '4', 49: '7', 196: '14', 121: '11', 25: '5', 169: '13', 36: '6'}
+>>> ls = {i ** 2 for i in range(15)}
+>>> ls
+{0, 1, 64, 4, 36, 100, 196, 9, 169, 16, 49, 81, 144, 25, 121}
+>>> type(ls)
+<class 'set'>
+>>> ls = (i ** 2 for i in range(15))
+>>> ls
+<generator object <genexpr> at 0x0000000003721048>
+>>> ls[0]
+Traceback (most recent call last):
+  File "<pyshell#147>", line 1, in <module>
+    ls[0]
+TypeError: 'generator' object is not subscriptable
+>>> for i in ls:
+    print(i)
+
+    
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+100
+121
+144
+169
+196
+>>> is
+SyntaxError: invalid syntax
+>>> x
+13
+>>> x is None
+False
+>>> type(None)
+<class 'NoneType'>
+>>> id(x)
+1838926288
+>>> id(None)
+1838676864
+>>> ls = [1,2,3]
+>>> ls2 = [1,2,3]
+>>> ls == ls2
+True
+>>> ls is ls2
+False
+>>> isinstance(x, int)
+True
+
+>>> max(len(i) for i in ['apple', 'banana', 'pomelo', 'kivi'])
+6
+>>> len(i) for i in ['apple', 'banana', 'pomelo', 'kivi']
+SyntaxError: invalid syntax
+>>> sum(int(i) for i in '1234567890'[:5])
+15
+>>> sum(int(i) for i in '1234567890'[:5])
+15
+>>> matr = [[1,2,3], [4,5,6], [7,8,9]]
+>>> print(matr)
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+>>> list(zip(*[[1,2,3], [4,5,6], [7,8,9]]))
+[(1, 4, 7), (2, 5, 8), (3, 6, 9)]
+
+========================================================
+
+>>> s = 'This is my e-mail: superman@mail.ru. My dog`s e-mail is: superdog@dogmail.com'
+>>> import re
+>>> re.search('dog', s)
+<_sre.SRE_Match object; span=(40, 43), match='dog'>
+>>> re.search('cat', s)
+>>> if re.search('cat', s):
+    print('CAAAT')
+
+    
+>>> re.search('e-mail', s)
+<_sre.SRE_Match object; span=(11, 17), match='e-mail'>
+>>> re.findall('e-mail', s)
+['e-mail', 'e-mail']
+>>> len(re.findall('e-mail', s))
+2
+>>> s.find('e-mail')
+11
+>>> s.find('cat')
+-1
+>>> re.findall('is', s)
+['is', 'is', 'is']
+>>> re.findall(' is ', s)
+[' is ']
+>>> re.findall('\sis\s', s)
+[' is ']
+>>> re.findall('\s(is)\s', s)
+['is']
+>>> re.findall('mail', s)
+['mail', 'mail', 'mail', 'mail']
+>>> re.findall('.mail.', s)
+['-mail:', '@mail.', '-mail ', 'gmail.']
+>>> re.findall('.*mail.*', s)
+['This is my e-mail: superman@mail.ru. My dog`s e-mail is: superdog@dogmail.com']
+>>> re.findall('.*?mail.*', s)
+['This is my e-mail: superman@mail.ru. My dog`s e-mail is: superdog@dogmail.com']
+>>> re.findall('.*?mail.*?', s)
+['This is my e-mail', ': superman@mail', '.ru. My dog`s e-mail', ' is: superdog@dogmail']
+>>> re.findall('\s(.*?mail.*?)\s', s)
+['is my e-mail:', 'My dog`s e-mail']
+>>> re.findall('\s(.*?mail.*?\..*?)\s', s)
+['is my e-mail: superman@mail.ru.']
+>>> re.findall(r'\s(.*?mail.*?\..*?)\s', s)
+['is my e-mail: superman@mail.ru.']
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 'adlfkj \n adsf'
+'adlfkj \n adsf'
+>>> print('adlfkj \n adsf')
+adlfkj 
+ adsf
+>>> print(r'adlfkj \n adsf')
+adlfkj \n adsf
+>>> re.findall(r'\s[a-z]\s', s)
+[]
+>>> re.findall(r'\s[a-z]*?\s', s)
+[' is ']
+>>> re.findall(r'\s[a-z]+\s', s)
+[' is ']
+>>> re.findall(r'[a-z]+', s)
+['his', 'is', 'my', 'e', 'mail', 'superman', 'mail', 'ru', 'y', 'dog', 's', 'e', 'mail', 'is', 'superdog', 'dogmail', 'com']
+>>> re.findall(r'[a-zA-Z]+', s)
+['This', 'is', 'my', 'e', 'mail', 'superman', 'mail', 'ru', 'My', 'dog', 's', 'e', 'mail', 'is', 'superdog', 'dogmail', 'com']
+>>> re.findall(r'[A-z]+', s)
+['This', 'is', 'my', 'e', 'mail', 'superman', 'mail', 'ru', 'My', 'dog`s', 'e', 'mail', 'is', 'superdog', 'dogmail', 'com']
+>>> re.findall(r'\w+', s)
+['This', 'is', 'my', 'e', 'mail', 'superman', 'mail', 'ru', 'My', 'dog', 's', 'e', 'mail', 'is', 'superdog', 'dogmail', 'com']
+>>> re.findall(r'\W+', s)
+[' ', ' ', ' ', '-', ': ', '@', '.', '. ', ' ', '`', ' ', '-', ' ', ': ', '@', '.']
+>>> re.findall(r'\d+', s)
+[]
+>>> s2 = 'My phone number is 322-23-22'
+>>> re.findall(r'\d+', s2)
+['322', '23', '22']
+>>> re.findall(r'[\d-]+', s2)
+['322-23-22']
+>>> re.findall(r'[\D-]+', s2)
+['My phone number is ', '-', '-']
+>>> re.findall(r'[0-9-]+', s2)
+['322-23-22']
+>>> re.findall(r'[0-9-]+', s2)
+['322-23-22']
+>>> re.findall(r'\w+@\w+\.\w+', s)
+['superman@mail.ru', 'superdog@dogmail.com']
+>>> re.findall(r'\w+@\w+\.ru', s)
+['superman@mail.ru']
+>>> re.findall(r'\w+@\w+\.\w{2}', s)
+['superman@mail.ru', 'superdog@dogmail.co']
+>>> 'This is my e-mail: superman@mail.ru. My dog`s e-mail is: superdog@dogmail.com. Aleksandr asks if mail@mydomen.ucoz.ru is email'
+'This is my e-mail: superman@mail.ru. My dog`s e-mail is: superdog@dogmail.com. Aleksandr asks if mail@mydomen.ucoz.ru is email'
+>>> s3 = 'This is my e-mail: superman@mail.ru. My dog`s e-mail is: superdog@dogmail.com. Aleksandr asks if mail@mydomen.ucoz.ru is email'
+>>> re.findall(r'\w+@\w+\.\w{2}', s)
+['superman@mail.ru', 'superdog@dogmail.co']
+>>> re.findall(r'\w+@\w+\.\w{2}[\s\.]', s)
+['superman@mail.ru.']
+>>> re.findall(r'(\w+@\w+\.\w{2})[\s\.]', s)
+['superman@mail.ru']
+>>> re.findall(r'(\w+@(\w+\.)(\1)*?\w{2})[\s\.]', s)
+Traceback (most recent call last):
+  File "<pyshell#239>", line 1, in <module>
+    re.findall(r'(\w+@(\w+\.)(\1)*?\w{2})[\s\.]', s)
+  File "C:\Python34\lib\re.py", line 210, in findall
+    return _compile(pattern, flags).findall(string)
+  File "C:\Python34\lib\re.py", line 294, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Python34\lib\sre_compile.py", line 568, in compile
+    p = sre_parse.parse(p, flags)
+  File "C:\Python34\lib\sre_parse.py", line 780, in parse
+    p = _parse_sub(source, pattern, 0)
+  File "C:\Python34\lib\sre_parse.py", line 377, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Python34\lib\sre_parse.py", line 728, in _parse
+    p = _parse_sub(source, state)
+  File "C:\Python34\lib\sre_parse.py", line 377, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Python34\lib\sre_parse.py", line 728, in _parse
+    p = _parse_sub(source, state)
+  File "C:\Python34\lib\sre_parse.py", line 377, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Python34\lib\sre_parse.py", line 750, in _parse
+    code = _escape(source, this, state)
+  File "C:\Python34\lib\sre_parse.py", line 356, in _escape
+    raise error("cannot refer to open group")
+sre_constants.error: cannot refer to open group
+>>> re.findall(r'\w+@(\w+\.)(\1)*?\w{2}[\s\.]', s)
+[('mail.', '')]
+>>> re.findall(r'\w+@(\w+\.)*?\w{2}[\s\.]', s)
+['mail.']
+>>> re.findall(r'\w+@[\w+\.]*?\w{2}[\s\.]', s)
+['superman@mail.', 'superdog@dogmail.']
+>>> re.findall(r'\w+@[(\w+\.)]*?\w{2}[\s\.]', s)
+['superman@mail.', 'superdog@dogmail.']
+>>> re.findall(r'@(\w+\.)(\1)\w{2}[\s\.]', s)
+[]
+>>> re.findall(r'@(\w+\.)(\1)\w{2}[\s\.]', s3)
+[]
+>>> re.findall(r'@(\w+\.)(\1)\w{2}[\s\.]', s3)
+[]
+>>> re.findall(r'@(\w+\.)+\w{2}[\s\.]', s3)
+['mail.', 'ucoz.']
+>>> re.findall(r'\w+@[\w+\.]+\w{2}[\s\.]', s3)
+['superman@mail.ru.', 'superdog@dogmail.com.', 'mail@mydomen.ucoz.ru ']
+>>> re.findall(r'(\w+@[\w+\.]+\w{2})[\s\.]', s3)
+['superman@mail.ru', 'superdog@dogmail.com', 'mail@mydomen.ucoz.ru']
+>>> re.findall(r'\w+(?:@)[\w+\.]+\w{2}[\s\.]', s3)
+['superman@mail.ru.', 'superdog@dogmail.com.', 'mail@mydomen.ucoz.ru ']
+>>> re.findall(r'(?\w+@)[\w+\.]+\w{2}[\s\.]', s3)
+Traceback (most recent call last):
+  File "<pyshell#251>", line 1, in <module>
+    re.findall(r'(?\w+@)[\w+\.]+\w{2}[\s\.]', s3)
+  File "C:\Python34\lib\re.py", line 210, in findall
+    return _compile(pattern, flags).findall(string)
+  File "C:\Python34\lib\re.py", line 294, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Python34\lib\sre_compile.py", line 568, in compile
+    p = sre_parse.parse(p, flags)
+  File "C:\Python34\lib\sre_parse.py", line 780, in parse
+    p = _parse_sub(source, pattern, 0)
+  File "C:\Python34\lib\sre_parse.py", line 377, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Python34\lib\sre_parse.py", line 715, in _parse
+    raise error("unexpected end of pattern")
+sre_constants.error: unexpected end of pattern
+>>> re.findall(r'(?:\w+@)[\w+\.]+\w{2}[\s\.]', s3)
+['superman@mail.ru.', 'superdog@dogmail.com.', 'mail@mydomen.ucoz.ru ']
+>>> re.findall(r'\w+@([\w+\.]+\w{2})[\s\.]', s3)
+['mail.ru', 'dogmail.com', 'mydomen.ucoz.ru']
+>>> s4 = 'zzx1234xxx789'
+>>> s4 = 'zzx1234xxx789yyy'
+>>> re.findall(r'[a-z]+\d+[a-z]+', s3)
+[]
+>>> re.findall(r'[a-z]+\d+[a-z]+', s4)
+['zzx1234xxx']
+>>> re.findall(r'([a-z]+)\d+([a-z]+)', s4)
+[('zzx', 'xxx')]
+>>> re.findall(r'(?<=[a-z]+)\d+([a-z]+)', s4)
+Traceback (most recent call last):
+  File "<pyshell#259>", line 1, in <module>
+    re.findall(r'(?<=[a-z]+)\d+([a-z]+)', s4)
+  File "C:\Python34\lib\re.py", line 210, in findall
+    return _compile(pattern, flags).findall(string)
+  File "C:\Python34\lib\re.py", line 294, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Python34\lib\sre_compile.py", line 572, in compile
+    code = _code(p, flags)
+  File "C:\Python34\lib\sre_compile.py", line 557, in _code
+    _compile(code, p.data, flags)
+  File "C:\Python34\lib\sre_compile.py", line 164, in _compile
+    raise error("look-behind requires fixed-width pattern")
+sre_constants.error: look-behind requires fixed-width pattern
+>>> re.findall(r'([a-z]+)\d+(?=[a-z]+)', s4)
+['zzx', 'xxx']
+>>> re.findall(r'([a-z]+)\d+(?<=[a-z]+)', s4)
+Traceback (most recent call last):
+  File "<pyshell#261>", line 1, in <module>
+    re.findall(r'([a-z]+)\d+(?<=[a-z]+)', s4)
+  File "C:\Python34\lib\re.py", line 210, in findall
+    return _compile(pattern, flags).findall(string)
+  File "C:\Python34\lib\re.py", line 294, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Python34\lib\sre_compile.py", line 572, in compile
+    code = _code(p, flags)
+  File "C:\Python34\lib\sre_compile.py", line 557, in _code
+    _compile(code, p.data, flags)
+  File "C:\Python34\lib\sre_compile.py", line 164, in _compile
+    raise error("look-behind requires fixed-width pattern")
+sre_constants.error: look-behind requires fixed-width pattern
+>>> re.findall(r'(?<=[a-z]{3})\d+([a-z]+)', s4)
+['xxx', 'yyy']
+>>> re.findall(r'(?<=[a-z]{3})\d+([a-z]+)', s4)
+['xxx', 'yyy']
+>>> re.findall(r'(?:[a-z]{3})\d+(?=[a-z]+)', s4)
+['zzx1234', 'xxx789']
+>>> re.findall(r'(?<=[a-z]{3})\d+(?=[a-z]+)', s4)
+['1234', '789']
+>>> re.findall(r'(?<=[a-z]{3})([a-z]+)\d+([a-z]+)', s4)
+[]
+>>> re.findall(r'(?<=[a-z]{3})\d+([a-z]+)', s4)
+['xxx', 'yyy']
+>>> re.findall(r'(?<=[a-z]{3})\d+(?=[a-z]+)', s4)
+['1234', '789']
+>>> re.findall(r'([a-z]+)\d+(?=[a-z]+)', s4)
+['zzx', 'xxx']
+\
+>>> re.findall(r'(?P<f>[a-z]+)\d+(?P<d>[a-z]+)', s4)
+[('zzx', 'xxx')]
+>>> re.search(r'(?P<f>[a-z]+)\d+(?P<d>[a-z]+)', s4)
+<_sre.SRE_Match object; span=(0, 10), match='zzx1234xxx'>
+
+>>> 
+>>> 
+>>> import os
+>>> os.path.join('adsf', 'adsfa', 'qewr')
+'adsf\\adsfa\\qewr'
+
+>>> for root, dirs, files in os.walk('d:\\projects\\edu\\geekbrains'):
+    print(files)
+
+['alph.py', 'code.7z', 'code.zip', 'coord.txt', 'gibbet.py', 'gibbet_client.py', 'gibbet_server.py']
+
+>>> import sys
+>>> dir(sys)
+['__displayhook__', '__doc__', '__excepthook__', '__interactivehook__', '__loader__', '__name__', '__package__', '__spec__', '__stderr__', '__stdin__', '__stdout__', '_clear_type_cache', '_current_frames', '_debugmallocstats', '_getframe', '_home', '_mercurial', '_xoptions', 'api_version', 'argv', 'base_exec_prefix', 'base_prefix', 'builtin_module_names', 'byteorder', 'call_tracing', 'callstats', 'copyright', 'displayhook', 'dllhandle', 'dont_write_bytecode', 'exc_info', 'excepthook', 'exec_prefix', 'executable', 'exit', 'flags', 'float_info', 'float_repr_style', 'getallocatedblocks', 'getcheckinterval', 'getdefaultencoding', 'getfilesystemencoding', 'getprofile', 'getrecursionlimit', 'getrefcount', 'getsizeof', 'getswitchinterval', 'gettrace', 'getwindowsversion', 'hash_info', 'hexversion', 'implementation', 'int_info', 'intern', 'last_traceback', 'last_type', 'last_value', 'maxsize', 'maxunicode', 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache', 'platform', 'prefix', 'setcheckinterval', 'setprofile', 'setrecursionlimit', 'setswitchinterval', 'settrace', 'stderr', 'stdin', 'stdout', 'thread_info', 'version', 'version_info', 'warnoptions', 'winver']
+
+---------------------------------------------
+>>> s = '123456f'
+>>> s = '123456'
+>>> mid = len(s) // 2
+>>> s[:mid]
+'123'
+>>> s[mid:]
+'456'
+>>> s1 = s[mid:]
+>>> s2 = s[mid:]
+>>> s1 = s[:mid]
+>>> s1 == s2
+False
+>>> s1
+'123'
+>>> sum(int(x) for x in s1)
+6
+>>> sum(int(x) for x in s2)
+15
+>>> sum1 = sum(int(x) for x in s2)
+>>> sum1 = sum(int(x) for x in s1)
+>>> sum2 = sum(int(x) for x in s2)
+>>> sum1 == sum2
+False
+>>> ls
+[1, 2, 3]
+>>> ls[4]
+Traceback (most recent call last):
+  File "<pyshell#325>", line 1, in <module>
+    ls[4]
+IndexError: list index out of range
+>>> try:
+    x = ls[4]
+except:
+    x = 777
+
+    
+>>> x
+777
+>>> try:
+    x = ls[4]
+except IndexError:
+    x = 777
+
+    
+>>> x
+777
+>>> 
